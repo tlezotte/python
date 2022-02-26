@@ -1,6 +1,6 @@
 BRANCH	 = main
-OWNER  	 = {{cookiecutter.project_owner}}
-REPO   	 = {{cookiecutter.project_repo}}
+OWNER  	 = {{cookiecutter.git_owner}}
+REPO   	 = {{cookiecutter.git_repo}}
 
 .SILENT: git
 .SILENT: install
@@ -21,9 +21,10 @@ install:
 git:
 	git init
 	git add .
-	git commit -m "Initial commit"
+	git commit -m "first commit"
+	git branch -M $(BRANCH)
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git
-	git push
+	git push -u origin main
 
 cli:
 	poetry add typer --quiet

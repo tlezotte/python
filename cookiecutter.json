@@ -10,5 +10,5 @@
     "tlezotte",
     "vanderbilt"
   ],
-  "git_repo": ""
+  "git_repo": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}"
 }
