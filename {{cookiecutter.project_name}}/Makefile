@@ -16,6 +16,9 @@ all:
 install:
 	poetry config virtualenvs.in-project true --quiet
 	poetry config virtualenvs.create true --quiet
+	cd {{ cookiecutter.project_home }}
+	poetry new {{ cookiecutter.project_slug }} --quiet
+	cd {{ cookiecutter.project_slug }}
 	poetry env use python --quiet
 
 git:
