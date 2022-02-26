@@ -2,16 +2,25 @@ BRANCH	 = main
 OWNER  	 = {{cookiecutter.git_owner}}
 REPO   	 = {{cookiecutter.git_repo}}
 
-#.SILENT: git
-#.SILENT: install
-#.SILENT: cli
-#.SILENT: api
-#.SILENT: show
+.SILENT: git
+.SILENT: install
+.SILENT: cli
+.SILENT: api
+.SILENT: show
 
 
 # Default target.
 all:
 	echo "Hello $(LOGNAME), nothing to do by default"
+
+setup:
+	make install
+	if '{{ cookiecutter.project_type }}' == 'api':
+		make api
+	if '{{ cookiecutter.project_type }}' == 'cli':
+		make cli
+	make git
+	make show
 
 install:
 	poetry config virtualenvs.in-project true --quiet
