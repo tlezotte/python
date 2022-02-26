@@ -5,6 +5,7 @@
     "cli",
     "api"
   ],
+  "min_python_version": "3.7",
   "git_owner": [
     "tlezotte",
     "vanderbilt"
