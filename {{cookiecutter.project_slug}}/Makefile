@@ -2,11 +2,11 @@ BRANCH	 = main
 OWNER  	 = {{cookiecutter.git_owner}}
 REPO   	 = {{cookiecutter.git_repo}}
 
-.SILENT: git
-.SILENT: install
-.SILENT: cli
-.SILENT: api
-.SILENT: show
+#.SILENT: git
+#.SILENT: install
+#.SILENT: cli
+#.SILENT: api
+#.SILENT: show
 
 
 # Default target.
