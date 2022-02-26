@@ -10,8 +10,6 @@ def remove_file(filepath):
 
 
 if __name__ == '__main__':
-    remove_file("README.rst")
-
     subprocess.run(["make", "install"])
 
     if '{{ cookiecutter.project_type }}' == 'api':
@@ -22,3 +20,5 @@ if __name__ == '__main__':
 
     subprocess.run(["make", "git"])
     subprocess.run(["make", "show"])
+
+    remove_file("README.rst")
