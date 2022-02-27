@@ -19,7 +19,7 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poet
 ```
 - Installed: `$HOME/.poetry`
 
-## Usefull Installs
+## Useful Installs
 
 ### Install pyenv
 
