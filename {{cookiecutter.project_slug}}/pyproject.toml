@@ -2,11 +2,10 @@
 name = "{{ cookiecutter.project_slug }}"
 version = "0.1.0"
 {%- if cookiecutter.project_type == "api" %}
-description = "{{cookiecutter.project_name}}: An {{cookiecutter.project_type.upper()}} Python Project"
+description = "An {{cookiecutter.project_type.upper()}} Python Project"
 {%- else %}
-description = "{{cookiecutter.project_name}}: A {{cookiecutter.project_type.upper()}} Python Project"
+description = "A {{cookiecutter.project_type.upper()}} Python Project"
 {%- endif %}
-
 authors = ["Tom LeZotte <tom@lezotte.net>"]
 
 [tool.poetry.dependencies]
