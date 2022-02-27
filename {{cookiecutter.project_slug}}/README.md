@@ -1,6 +1,10 @@
 # {{cookiecutter.project_name}}
 
+{%- if cookiecutter.project_type == "api" %}
+> An {{cookiecutter.project_type.upper()}} Python Project
+{%- else %}
 > A {{cookiecutter.project_type.upper()}} Python Project
+{%- endif %}
 
 ## Init Project
 

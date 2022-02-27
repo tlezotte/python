@@ -1,7 +1,12 @@
 [tool.poetry]
 name = "{{ cookiecutter.project_slug }}"
 version = "0.1.0"
-description = "{{ cookiecutter.project_name }}"
+{%- if cookiecutter.project_type == "api" %}
+description = "{{cookiecutter.project_name}}: An {{cookiecutter.project_type.upper()}} Python Project"
+{%- else %}
+description = "{{cookiecutter.project_name}}: A {{cookiecutter.project_type.upper()}} Python Project"
+{%- endif %}
+
 authors = ["Tom LeZotte <tom@lezotte.net>"]
 
 [tool.poetry.dependencies]
