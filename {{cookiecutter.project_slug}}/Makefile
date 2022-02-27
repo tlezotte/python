@@ -1,6 +1,7 @@
 BRANCH	 = main
 OWNER  	 = {{cookiecutter.git_owner}}
 REPO   	 = {{cookiecutter.git_repo}}
+EDITORS  = ("vscode",'atom','sublime')
 
 .SILENT: git
 .SILENT: venv
@@ -23,7 +24,9 @@ init:
 	make packages_data
 	{%- endif %}
 	make git
+	{%- if cookiecutter.editor in $(EDITORS) %}
 	make editor
+	{%- endif %}
 
 venv:
 	$(info ** Creating VENV ********************)
@@ -66,7 +69,7 @@ git:
 	git branch -M $(BRANCH) &> /dev/null
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
 
-{%- if cookiecutter.editor in ("vscode",'atom','sublime') %}
+{%- if cookiecutter.editor in $(EDITORS) %}
 editor:
 {%- if cookiecutter.editor == "vscode" %}
 	code .
