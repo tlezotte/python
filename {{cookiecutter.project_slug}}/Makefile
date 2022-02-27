@@ -40,7 +40,6 @@ packages:
 {%- if cookiecutter.project_type == "cli" %}
 packages:
 	$(info ** Installing CLI Software **********)
-	poetry add pandas &> /dev/null
 	poetry add typer &> /dev/null
 	poetry add rich &> /dev/null
 {%- endif %}
