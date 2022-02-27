@@ -5,5 +5,5 @@
 ```
 cookiecutter gh:tlezotte/python
 cd [project_name]
-make setup
+make init
 ```
