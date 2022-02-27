@@ -7,6 +7,7 @@ REPO   	 = {{cookiecutter.git_repo}}
 .SILENT: packages
 .SILENT: packages_data
 .SILENT: packages_dev
+.SILENT: editor
 .SILENT: init
 
 
@@ -22,6 +23,7 @@ init:
 	make packages_data
 	{%- endif %}
 	make git
+	make editor
 
 venv:
 	$(info ** Creating VENV ********************)
@@ -63,3 +65,14 @@ git:
 	git commit -m "first commit" &> /dev/null
 	git branch -M $(BRANCH) &> /dev/null
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
+
+editor:
+{%- if cookiecutter.editor == "vscode" %}
+	code .
+{%- endif %}
+{%- if cookiecutter.editor == "atom" %}
+	atom .
+{%- endif %}
+{%- if cookiecutter.editor == "sublime" %}
+	subl .
+{%- endif %}

@@ -10,7 +10,7 @@ make init
 
 ## Project Structure
 
-> Repo Home: https://github.com:$(OWNER)/$(REPO).git
+> Repo Home: https://github.com:{{ cookiecutter.git_owner }}/{{ cookiecutter.git_repo }}.git
 
 ### Installed Packages
 {% if cookiecutter.project_type == "api" %}
@@ -29,11 +29,11 @@ make init
 ### Package Basics
 
 {% if cookiecutter.project_type == "api" %}
-#### uvicorn server
+#### Uvicorn Server
 
 Run it: `uvicorn main:app --reload`
 
 Homepage: http://127.0.0.1:8000
 
-Documentation: http://127.0.0.1:8000/docs
+Swagger UI: http://127.0.0.1:8000/docs
 {%- endif %}

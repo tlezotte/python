@@ -14,5 +14,11 @@
     "tlezotte",
     "vanderbilt"
   ],
-  "git_repo": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}"
+  "git_repo": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "editor": [
+    "vscode",
+    "atom",
+    "sublime",
+    "none"
+  ]
 }
