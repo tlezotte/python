@@ -46,7 +46,3 @@ git:
 	git commit -m "first commit" &> /dev/null
 	git branch -M $(BRANCH) &> /dev/null
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
-
-show:
-	$(info ** Installed Packages ***************)
-	poetry show
