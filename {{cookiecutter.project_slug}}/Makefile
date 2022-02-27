@@ -5,7 +5,6 @@ REPO   	 = {{cookiecutter.git_repo}}
 .SILENT: git
 .SILENT: venv
 .SILENT: packages
-.SILENT: show
 .SILENT: init
 
 
