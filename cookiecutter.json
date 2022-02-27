@@ -5,6 +5,10 @@
     "cli",
     "api"
   ],
+  "project_data": [
+    true,
+    false
+  ],
   "min_python_version": "3.7",
   "git_owner": [
     "tlezotte",
