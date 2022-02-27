@@ -18,7 +18,7 @@ init:
 	make venv
 	make packages
 	make packages_dev
-	{%- if cookiecutter.project_data == True %}
+	{%- if cookiecutter.project_data == true %}
 	make packages_data
 	{%- endif %}
 	make git
@@ -45,7 +45,7 @@ packages:
 	poetry add rich &> /dev/null
 {%- endif %}
 
-{%- if cookiecutter.project_data == True %}
+{%- if cookiecutter.project_data == true %}
 packages_data:
 	$(info ** Installing Data Software **********)
 	poetry add pandas &> /dev/null
