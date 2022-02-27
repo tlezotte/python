@@ -1,9 +1,9 @@
 # {{cookiecutter.project_name}}
 
-- {{cookiecutter.project_slug}}
-- {{cookiecutter.project_type}}
+> A {{cookiecutter.project_type.upper()}} Project
+
 ## Initiate Python Project
 
 ```
-make setup
+make init
 ```

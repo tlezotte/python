@@ -6,18 +6,17 @@ REPO   	 = {{cookiecutter.git_repo}}
 .SILENT: venv
 .SILENT: packages
 .SILENT: show
-.SILENT: setup
+.SILENT: init
 
 
 # Default target.
 all:
 	echo "Hello $(LOGNAME), nothing to do by default"
 
-setup:
+init:
 	make venv
 	make packages
 	make git
-	make show
 
 venv:
 	$(info ** Creating VENV ********************)
