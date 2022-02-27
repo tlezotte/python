@@ -18,7 +18,7 @@ init:
 	make venv
 	make packages
 	make packages_dev
-	{%- if cookiecutter.project_data is sameas true %}
+	{%- if cookiecutter.project_data == True %}
 	make packages_data
 	{%- endif %}
 	make git
@@ -29,7 +29,7 @@ venv:
 	poetry config virtualenvs.create true --quiet
 	poetry env use python --quiet
 
-{%- if cookiecutter.project_type == "api" %}
+{% if cookiecutter.project_type == "api" %}
 packages:
 	$(info ** Installing API Software **********)
 	poetry add uvicorn[standard] &> /dev/null
@@ -45,7 +45,7 @@ packages:
 	poetry add rich &> /dev/null
 {%- endif %}
 
-{%- if cookiecutter.project_data is sameas true %}
+{%- if cookiecutter.project_data == True %}
 packages_data:
 	$(info ** Installing Data Software **********)
 	poetry add pandas &> /dev/null
