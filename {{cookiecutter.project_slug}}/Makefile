@@ -66,14 +66,13 @@ git:
 	git branch -M $(BRANCH) &> /dev/null
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
 
+{%- if cookiecutter.editor in ("vscode",'atom','sublime') %}
 editor:
-	echo
 {%- if cookiecutter.editor == "vscode" %}
 	code .
-{%- endif %}
-{%- if cookiecutter.editor == "atom" %}
+{%- elif cookiecutter.editor == "atom" %}
 	atom .
-{%- endif %}
-{%- if cookiecutter.editor == "sublime" %}
+{%- elif cookiecutter.editor == "sublime" %}
 	subl .
+{%- endif %}
 {%- endif %}
