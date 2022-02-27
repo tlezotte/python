@@ -1,3 +1,5 @@
+{%- set name = salt['cmd.run']('git config --global user.name') %}
+{%- set email = salt['cmd.run']('git config --global user.email') %}
 [tool.poetry]
 name = "{{ cookiecutter.project_slug }}"
 version = "0.1.0"
@@ -6,7 +8,7 @@ description = "An {{cookiecutter.project_type.upper()}} Python Project"
 {%- else %}
 description = "A {{cookiecutter.project_type.upper()}} Python Project"
 {%- endif %}
-authors = ["Tom LeZotte <tom@lezotte.net>"]
+authors = ["{{cookiecutter.name}} <{{cookiecutter.email}}>"]
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.min_python_version }}"
