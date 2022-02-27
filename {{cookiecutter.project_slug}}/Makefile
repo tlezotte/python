@@ -48,7 +48,7 @@ packages:
 	poetry add rich &> /dev/null
 {%- endif %}
 
-{% if cookiecutter.project_data == "True" %}
+{%- if cookiecutter.project_data == "True" %}
 packages_data:
 	$(info ** Installing Data Software *********)
 	poetry add pandas &> /dev/null
@@ -68,7 +68,7 @@ git:
 	git branch -M $(BRANCH) &> /dev/null
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
 
-{%- if cookiecutter.editor in ("vscode",'atom','sublime') %}
+{% if cookiecutter.editor in ("vscode",'atom','sublime') %}
 editor:
 {%- if cookiecutter.editor == "vscode" %}
 	code .
