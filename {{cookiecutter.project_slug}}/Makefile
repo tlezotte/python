@@ -48,7 +48,7 @@ packages:
 	poetry add rich &> /dev/null
 {%- endif %}
 
-{%- if cookiecutter.project_data == "True" %}
+{% if cookiecutter.project_data == "True" %}
 packages_data:
 	$(info ** Installing Data Software *********)
 	poetry add pandas &> /dev/null
