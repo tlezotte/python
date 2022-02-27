@@ -9,7 +9,7 @@
     true,
     false
   ],
-  "min_python_version": "3.7",
+  "min_python_version": "3.8",
   "git_owner": [
     "tlezotte",
     "vanderbilt"
