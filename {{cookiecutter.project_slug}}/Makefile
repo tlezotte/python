@@ -48,7 +48,7 @@ packages:
 
 {% if cookiecutter.project_data == "True" %}
 packages_data:
-	$(info ** Installing Data Software **********)
+	$(info ** Installing Data Software *********)
 	poetry add pandas &> /dev/null
 {%- endif %}
 
@@ -67,6 +67,7 @@ git:
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
 
 editor:
+	echo
 {%- if cookiecutter.editor == "vscode" %}
 	code .
 {%- endif %}

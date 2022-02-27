@@ -10,7 +10,7 @@ make init
 
 ## Project Structure
 
-> Repo Home: https://github.com:{{ cookiecutter.git_owner }}/{{ cookiecutter.git_repo }}.git
+> Repo Home: https://github.com/{{ cookiecutter.git_owner }}/{{ cookiecutter.git_repo }}
 
 ### Installed Packages
 {% if cookiecutter.project_type == "api" %}
