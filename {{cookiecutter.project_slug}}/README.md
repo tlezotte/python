@@ -10,7 +10,7 @@
 
 - Repo Home: https://github.com/{{ cookiecutter.git_owner }}/{{ cookiecutter.git_repo }}
 
-### Setup Applications
+### Project Applications
 
 #### [Poetry](https://python-poetry.org)
 
