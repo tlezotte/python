@@ -6,12 +6,6 @@
 > A {{cookiecutter.project_type.upper()}} Python Project
 {%- endif %}
 
-## Init Project
-
-```
-make init
-```
-
 ## Project Structure
 
 - Repo Home: https://github.com/{{ cookiecutter.git_owner }}/{{ cookiecutter.git_repo }}
