@@ -35,6 +35,4 @@ brew install pyenv
 
 ```
 cookiecutter gh:tlezotte/python
-cd [project_name]
-make init
 ```
