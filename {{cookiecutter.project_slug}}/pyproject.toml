@@ -6,7 +6,7 @@ description = "An {{cookiecutter.project_type.upper()}} Python Project"
 {%- else %}
 description = "A {{cookiecutter.project_type.upper()}} Python Project"
 {%- endif %}
-authors = ["FULL_NAME <EMAIL>"]
+authors = ["FULL_NAME <EMAIL_ADDRESS>"]
 repository = "https://github.com/{{ cookiecutter.git_owner }}/{{ cookiecutter.git_repo }}"
 
 [tool.poetry.dependencies]

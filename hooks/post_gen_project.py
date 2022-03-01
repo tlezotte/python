@@ -26,18 +26,18 @@ def change_git_config(filename):
     fin = open(filename, "rt")
     data = fin.read()
     data = data.replace('FULL_NAME', git_config("name"))
-    data = data.replace('EMAIL', git_config("email"))
+    data = data.replace('EMAIL_ADDRESS', git_config("email"))
     fin.close()
 
     fin = open(filename, "wt")
     fin.write(data)
     fin.close()
 
-def init_project():
+def run_make(target):
     """
     Initialize a new project
     """
-    os.system("make init")
+    os.system("make " + target)
 
 
 if __name__ == '__main__':
@@ -45,4 +45,4 @@ if __name__ == '__main__':
     for file in files:
         change_git_config(file)
 
-    init_project()
+    run_make("init")

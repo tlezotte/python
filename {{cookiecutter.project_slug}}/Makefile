@@ -68,7 +68,7 @@ git:
 	git branch -M $(BRANCH) &> /dev/null
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
 	git config user.name "FULL_NAME" &> /dev/null
-	git config user.email "EMAIL" &> /dev/null
+	git config user.email "EMAIL_ADDRESS" &> /dev/null
 
 {% if cookiecutter.editor in ("vscode",'atom','sublime') %}
 editor:
