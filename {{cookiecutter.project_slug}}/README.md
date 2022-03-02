@@ -67,6 +67,8 @@ Swagger UI: http://127.0.0.1:8000/docs
 {%- if cookiecutter.use_sphinx == "True" %}
 ## Sphinx Documentation
 
+>Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.
+
 ### Generate Docs
 
 ```
