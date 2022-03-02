@@ -8,6 +8,7 @@ REPO   	 = {{cookiecutter.git_repo}}
 .SILENT: packages_data
 .SILENT: packages_dev
 .SILENT: editor
+.SILENT: sphinx
 .SILENT: init
 
 
@@ -24,7 +25,7 @@ init:
 	{%- endif %}
 	make git
 	{%- if cookiecutter.use_sphinx == "True" %}
-	sphinx
+	make sphinx
 	{%- endif %}
 	{%- if cookiecutter.editor in ("vscode",'atom','sublime') %}
 	make editor
@@ -73,7 +74,7 @@ git:
 	git config user.name "FULL_NAME" &> /dev/null
 	git config user.email "EMAIL_ADDRESS" &> /dev/null
 
-{%- if cookiecutter.use_sphinx == "True" %}
+{% if cookiecutter.use_sphinx == "True" %}
 sphinx:
 	sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "FULL_NAME <EMAIL_ADDRESS>" --release 0.0.1 --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs --quiet
 	poetry add --dev sphinx_rtd_theme &> /dev/null
