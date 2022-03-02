@@ -79,10 +79,7 @@ poetry run sphinx-apidoc -o . ..
 ### Convert Docs to HTML
 
 ```
-cd docs
 poetry run make html
-cd _build/html
-python -m http.server 8000
-open http://localhost:8000
+open _build/html/index.html
 ```
 {%- endif %}
