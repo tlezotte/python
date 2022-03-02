@@ -35,13 +35,3 @@ brew install pyenv
 ```
 
 - Installed versions: `$HOME/.pyenv`
-
-## Install [Sphinx](https://www.sphinx-doc.org)
-
->Sphinx is a tool that makes it easy to create intelligent and beautiful documentation.
-
-```
-brew install sphinx-doc
-```
-
-- Documentation Location: `docs`
