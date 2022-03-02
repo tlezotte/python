@@ -76,7 +76,8 @@ git:
 
 {% if cookiecutter.use_sphinx == "True" %}
 sphinx:
-	sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "FULL_NAME <EMAIL_ADDRESS>" --release 0.0.1 --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs --quiet
+	$(info ** Sphinx Documentatoin *************)
+	poetry run sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "FULL_NAME <EMAIL_ADDRESS>" --release 0.0.1 --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs --quiet
 	poetry add --dev sphinx_rtd_theme &> /dev/null
 	sed -i '' 's/^# import os/import os/' conf.py &> /dev/null
 	sed -i '' 's/^# import sys/import sys/' conf.py &> /dev/null
