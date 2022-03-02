@@ -1,6 +1,7 @@
 BRANCH	 = main
 OWNER  	 = {{cookiecutter.git_owner}}
 REPO   	 = {{cookiecutter.git_repo}}
+SPCONF   = docs/conf.py
 
 .SILENT: git
 .SILENT: venv
@@ -80,10 +81,10 @@ sphinx:
 	poetry add --dev sphinx &> /dev/null
 	poetry add --dev sphinx_rtd_theme &> /dev/null
 	poetry run sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "FULL_NAME <EMAIL_ADDRESS>" --release 0.0.1 --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs --quiet
-	sed -i '' 's/^# import os/import os/' conf.py &> /dev/null
-	sed -i '' 's/^# import sys/import sys/' conf.py &> /dev/null
-	sed -i '' 's/^# sys.path.insert(0, os.path.abspath('.'))/sys.path.insert(0, os.path.abspath('..'))/' conf.py &> /dev/null
-	sed -i '' 's/alabaster/sphinx_rtd_theme/' conf.py &> /dev/null
+	sed -i '' 's/^# import os/import os/' $(SPCONF) &> /dev/null
+	sed -i '' 's/^# import sys/import sys/' $(SPCONF) &> /dev/null
+	sed -i '' 's/^# sys.path.insert(0, os.path.abspath(\'.\'))/sys.path.insert(0, os.path.abspath(\'.\'))/' $(SPCONF) &> /dev/null
+	sed -i '' 's/alabaster/sphinx_rtd_theme/' $(SPCONF) &> /dev/null
 {%- endif %}
 
 {% if cookiecutter.editor in ("vscode",'atom','sublime') %}
