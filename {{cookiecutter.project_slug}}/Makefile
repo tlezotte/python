@@ -23,6 +23,9 @@ init:
 	make packages_data
 	{%- endif %}
 	make git
+	{%- if cookiecutter.use_sphinx == "True" %}
+	sphinx
+	{%- endif %}
 	{%- if cookiecutter.editor in ("vscode",'atom','sublime') %}
 	make editor
 	{%- endif %}
@@ -69,6 +72,16 @@ git:
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
 	git config user.name "FULL_NAME" &> /dev/null
 	git config user.email "EMAIL_ADDRESS" &> /dev/null
+
+{%- if cookiecutter.use_sphinx == "True" %}
+sphinx:
+	sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "FULL_NAME <EMAIL_ADDRESS>" --release 0.0.1 --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs --quiet
+	poetry add --dev sphinx_rtd_theme &> /dev/null
+	sed -i '' 's/^# import os/import os/' conf.py &> /dev/null
+	sed -i '' 's/^# import sys/import sys/' conf.py &> /dev/null
+	sed -i '' 's/^# sys.path.insert(0, os.path.abspath('.'))/sys.path.insert(0, os.path.abspath('..'))/' conf.py &> /dev/null
+	sed -i '' 's/alabaster/sphinx_rtd_theme/' conf.py &> /dev/null
+{%- endif %}
 
 {% if cookiecutter.editor in ("vscode",'atom','sublime') %}
 editor:

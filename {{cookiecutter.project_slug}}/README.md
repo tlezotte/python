@@ -63,3 +63,22 @@ Homepage: http://127.0.0.1:8000
 Swagger UI: http://127.0.0.1:8000/docs
 {%- endif %}
 {%- endif %}
+
+{%- if cookiecutter.use_sphinx == "True" %}
+## Sphinx Documentation
+
+### Generate Docs
+
+```
+cd docs
+poetry run sphinx-api -o . ..
+```
+
+### Convert Docs to HTML
+
+```
+cd docs
+poetry run make html
+open _build/html/index.html
+```
+{%- endif %}

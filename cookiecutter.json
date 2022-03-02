@@ -15,6 +15,10 @@
     "vanderbilt"
   ],
   "git_repo": "{{ cookiecutter.project_name | slugify }}",
+  "use_sphinx": [
+    true,
+    false
+  ],
   "editor": [
     "vscode",
     "atom",
