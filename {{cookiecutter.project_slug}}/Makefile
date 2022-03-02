@@ -24,10 +24,10 @@ init:
 	{%- if cookiecutter.project_data == "True" %}
 	make packages_data
 	{%- endif %}
-	make git
 	{%- if cookiecutter.use_sphinx == "True" %}
 	make sphinx
 	{%- endif %}
+	make git
 	{%- if cookiecutter.editor in ("vscode",'atom','sublime') %}
 	make editor
 	{%- endif %}
@@ -65,16 +65,6 @@ packages_dev:
 	poetry add --dev autopep8 &> /dev/null
 	poetry add --dev ipykernel &> /dev/null
 
-git:
-	$(info ** Initiate Git Repo ****************)
-	git init &> /dev/null
-	git add . &> /dev/null
-	git commit -m "first commit" &> /dev/null
-	git branch -M $(BRANCH) &> /dev/null
-	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
-	git config user.name "FULL_NAME" &> /dev/null
-	git config user.email "EMAIL_ADDRESS" &> /dev/null
-
 {% if cookiecutter.use_sphinx == "True" %}
 sphinx:
 	$(info ** Sphinx Documentation *************)
@@ -86,6 +76,16 @@ sphinx:
 	sed -i '' "s/^# sys.path.insert(0, os.path.abspath('.'))/sys.path.insert(0, os.path.abspath('..'))/" $(SPCONF) &> /dev/null
 	sed -i '' 's/alabaster/sphinx_rtd_theme/' $(SPCONF) &> /dev/null
 {%- endif %}
+
+git:
+	$(info ** Initiate Git Repo ****************)
+	git init &> /dev/null
+	git add . &> /dev/null
+	git commit -m "first commit" &> /dev/null
+	git branch -M $(BRANCH) &> /dev/null
+	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
+	git config user.name "FULL_NAME" &> /dev/null
+	git config user.email "EMAIL_ADDRESS" &> /dev/null
 
 {% if cookiecutter.editor in ("vscode",'atom','sublime') %}
 editor:
