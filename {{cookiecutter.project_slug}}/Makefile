@@ -83,7 +83,7 @@ sphinx:
 	poetry run sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "FULL_NAME <EMAIL_ADDRESS>" --release 0.0.1 --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs &> /dev/null
 	sed -i '' 's/^# import os/import os/' $(SPCONF) &> /dev/null
 	sed -i '' 's/^# import sys/import sys/' $(SPCONF) &> /dev/null
-	sed -i '' "s/^# sys.path.insert(0, os.path.abspath('.'))/sys.path.insert(0, os.path.abspath('.'))/" $(SPCONF) &> /dev/null
+	sed -i '' "s/^# sys.path.insert(0, os.path.abspath('.'))/sys.path.insert(0, os.path.abspath('..'))/" $(SPCONF) &> /dev/null
 	sed -i '' 's/alabaster/sphinx_rtd_theme/' $(SPCONF) &> /dev/null
 {%- endif %}
 

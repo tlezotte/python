@@ -71,7 +71,7 @@ Swagger UI: http://127.0.0.1:8000/docs
 
 ```
 cd docs
-poetry run sphinx-api -o . ..
+poetry run sphinx-apidoc -o . ..
 ```
 
 ### Convert Docs to HTML
