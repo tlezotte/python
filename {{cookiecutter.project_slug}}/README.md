@@ -81,6 +81,8 @@ poetry run sphinx-apidoc -o . ..
 ```
 cd docs
 poetry run make html
-open _build/html/index.html
+cd _build/html
+python -m http.server 8000
+open http://localhost:8000
 ```
 {%- endif %}
