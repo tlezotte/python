@@ -5,20 +5,22 @@
     "cli",
     "api"
   ],
-  "project_data": [
+  "use_pandas": [
     true,
     false
   ],
-  "min_python_version": "3.8",
+  "use_sphinx": [
+    true,
+    false
+  ],
+  "full_name": "",
+  "email_address": "",
+  "min_python_version": "^3.7",
   "git_owner": [
     "tlezotte",
     "vanderbilt"
   ],
   "git_repo": "{{ cookiecutter.project_name | slugify }}",
-  "use_sphinx": [
-    true,
-    false
-  ],
   "editor": [
     "vscode",
     "atom",

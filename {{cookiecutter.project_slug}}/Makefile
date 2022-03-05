@@ -21,7 +21,7 @@ init:
 	make venv
 	make packages
 	make packages_dev
-	{%- if cookiecutter.project_data == "True" %}
+	{%- if cookiecutter.use_pandas == "True" %}
 	make packages_data
 	{%- endif %}
 	{%- if cookiecutter.use_sphinx == "True" %}
@@ -36,7 +36,7 @@ venv:
 	$(info ** Creating VENV ********************)
 	poetry config virtualenvs.in-project true --quiet
 	poetry config virtualenvs.create true --quiet
-	poetry init --name {{cookiecutter.project_slug}} --description "{{cookiecutter.project_name}}" --author "FULL_NAME <EMAIL_ADDRESS>" --python {{cookiecutter.min_python_version}} --no-interaction --quiet
+	poetry init --name {{cookiecutter.project_slug}} --description "{{cookiecutter.project_name}}" --author "{{cookiecutter.full_name}} <{{cookiecutter.email_address}}>" --python {{cookiecutter.min_python_version}} --no-interaction --quiet
 	poetry env use python --quiet
 
 {% if cookiecutter.project_type == "api" %}
@@ -54,7 +54,7 @@ packages:
 	poetry add rich &> /dev/null
 {%- endif %}
 
-{% if cookiecutter.project_data == "True" %}
+{% if cookiecutter.use_pandas == "True" %}
 packages_data:
 	$(info ** Installing Data Software *********)
 	poetry add pandas &> /dev/null
@@ -71,7 +71,7 @@ sphinx:
 	$(info ** Sphinx Documentation *************)
 	poetry add --dev sphinx &> /dev/null
 	poetry add --dev sphinx_rtd_theme &> /dev/null
-	poetry run sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "FULL_NAME <EMAIL_ADDRESS>" --release 0.0.1 --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs &> /dev/null
+	poetry run sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "{{cookiecutter.full_name}} <{{cookiecutter.email_address}}>" --release 0.0.1 --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs &> /dev/null
 	sed -i '' 's/^# import os/import os/' $(SPCONF) &> /dev/null
 	sed -i '' 's/^# import sys/import sys/' $(SPCONF) &> /dev/null
 	sed -i '' "s/^# sys.path.insert(0, os.path.abspath('.'))/sys.path.insert(0, os.path.abspath('..'))/" $(SPCONF) &> /dev/null
@@ -85,8 +85,8 @@ git:
 	git commit -m "first commit" &> /dev/null
 	git branch -M $(BRANCH) &> /dev/null
 	git remote add origin git@github.com:$(OWNER)/$(REPO).git &> /dev/null
-	git config user.name "FULL_NAME" &> /dev/null
-	git config user.email "EMAIL_ADDRESS" &> /dev/null
+	git config user.name "{{cookiecutter.full_name}}" &> /dev/null
+	git config user.email "{{cookiecutter.email_address}}" &> /dev/null
 
 {% if cookiecutter.editor in ("vscode",'atom','sublime') %}
 editor:

@@ -43,7 +43,7 @@
 > Rich is a Python library for writing rich text (with color and style) to the terminal, and for displaying advanced content such as tables, markdown, and syntax highlighted code.
 
 {%- endif %}
-{% if cookiecutter.project_data == "True" %}
+{% if cookiecutter.use_pandas == "True" %}
 #### [pandas](https://pandas.pydata.org)
 
 > pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool,
