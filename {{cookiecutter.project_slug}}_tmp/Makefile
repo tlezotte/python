@@ -36,7 +36,8 @@ venv:
 	$(info ** Creating VENV ********************)
 	poetry config virtualenvs.in-project true --quiet
 	poetry config virtualenvs.create true --quiet
-	poetry init --name {{cookiecutter.project_slug}} --description "{{cookiecutter.project_name}}" --author "{{cookiecutter.full_name}} <{{cookiecutter.email_address}}>" --python {{cookiecutter.min_python_version}} --no-interaction --quiet
+	#poetry init --name {{cookiecutter.project_slug}} --description "{{cookiecutter.project_name}}" --author "{{cookiecutter.full_name}} <{{cookiecutter.email_address}}>" --python {{cookiecutter.min_python_version}} --no-interaction --quiet
+	poetry new {{cookiecutter.project_slug}} --quiet
 	poetry env use python --quiet
 
 {% if cookiecutter.project_type == "api" %}
