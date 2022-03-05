@@ -4,6 +4,8 @@ import shutil
 
 
 PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
+PROJECT_PATH = os.path.join(PROJECT_DIRECTORY, "{{cookiecutter.project_slug}}")
+PROJECT_TMP_PATH = os.path.join(PROJECT_DIRECTORY, "{{cookiecutter.project_slug}}_tmp")
 
 
 def run_make(target):
@@ -15,12 +17,12 @@ def run_make(target):
     os.system("make " + target)
 
 def copy_files():
-    shutil.copyfile("../{{cookiecutter.project_slug}}_tmp/.gitignore", ".gitignore")
-    shutil.copyfile("../{{cookiecutter.project_slug}}_tmp/Makefile", "Makefile")
-    shutil.copyfile("../{{cookiecutter.project_slug}}_tmp/README.md", "README.md")
+    shutil.copyfile(PROJECT_TMP_PATH + "/.gitignore", PROJECT_PATH)
+    shutil.copyfile(PROJECT_TMP_PATH + "/Makefile", PROJECT_PATH)
+    shutil.copyfile(PROJECT_TMP_PATH + "/README.md", PROJECT_PATH)
 
 def remove_tmp():
-    shutil.rmtree("../{{cookiecutter.project_slug}}_tmp")
+    shutil.rmtree(PROJECT_TMP_PATH)
 
 
 if __name__ == '__main__':
