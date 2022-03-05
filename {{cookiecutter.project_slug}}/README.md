@@ -8,7 +8,7 @@
 
 ## Project Structure
 
-- Repo Home: https://github.com/{{ cookiecutter.git_owner }}/{{ cookiecutter.git_repo }}
+- Repo Home: https://github.com/{{ cookiecutter.git_owner }}/{{ cookiecutter.project_slug }}
 
 ### Project Applications
 

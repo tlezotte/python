@@ -8,8 +8,8 @@
     "api"
   ],
   "use_pandas": [
-    true,
-    false
+    false,
+    true
   ],
   "use_sphinx": [
     true,
