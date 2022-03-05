@@ -1,6 +1,8 @@
 {
   "project_name": "",
-  "project_slug": "{{ cookiecutter.project_name | slugify }}",
+  "project_slug": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
+  "project_version": "0.1.0",
+  "min_python_version": "^3.7",
   "project_type": [
     "cli",
     "api"
@@ -15,12 +17,10 @@
   ],
   "full_name": "",
   "email_address": "",
-  "min_python_version": "^3.7",
   "git_owner": [
     "tlezotte",
     "vanderbilt"
   ],
-  "git_repo": "{{ cookiecutter.project_name | slugify }}",
   "editor": [
     "vscode",
     "atom",

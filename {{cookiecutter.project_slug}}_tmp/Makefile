@@ -1,10 +1,10 @@
 BRANCH	 = main
 OWNER  	 = {{cookiecutter.git_owner}}
-REPO   	 = {{cookiecutter.git_repo}}
+REPO   	 = {{cookiecutter.project_slug}}
 SPCONF   = docs/conf.py
 
 .SILENT: git
-.SILENT: venv
+.SILENT: poetry
 .SILENT: packages
 .SILENT: packages_data
 .SILENT: packages_dev
@@ -18,7 +18,7 @@ all:
 	echo "Hello $(LOGNAME), nothing to do by default"
 
 init:
-	make venv
+	make poetry
 	make packages
 	make packages_dev
 	{%- if cookiecutter.use_pandas == "True" %}
@@ -32,12 +32,16 @@ init:
 	make editor
 	{%- endif %}
 
-venv:
-	$(info ** Creating VENV ********************)
+poetry:
+	$(info ** Initiate Poetry ******************)
 	poetry config virtualenvs.in-project true --quiet
 	poetry config virtualenvs.create true --quiet
-	#poetry init --name {{cookiecutter.project_slug}} --description "{{cookiecutter.project_name}}" --author "{{cookiecutter.full_name}} <{{cookiecutter.email_address}}>" --python {{cookiecutter.min_python_version}} --no-interaction --quiet
-	poetry new {{cookiecutter.project_slug}} --quiet
+	poetry init --name {{cookiecutter.project_slug}} --description "{{cookiecutter.project_name}}" --author "{{cookiecutter.full_name}} <{{cookiecutter.email_address}}>" --python {{cookiecutter.min_python_version}} --no-interaction --quiet
+	mkdir {{cookiecutter.project_slug}}
+	printf "__version__ = '{{cookiecutter.project_version}}'" > {{cookiecutter.project_slug}}/__init__.py
+	mkdir tests
+	touch tests/__init__.py
+	printf "from {{cookiecutter.project_slug}} import __version__\n\ndef test_version():\n    assert __version__ == '{{cookiecutter.project_version}}'" > tests/test_version.py
 	poetry env use python --quiet
 
 {% if cookiecutter.project_type == "api" %}
@@ -72,7 +76,7 @@ sphinx:
 	$(info ** Sphinx Documentation *************)
 	poetry add --dev sphinx &> /dev/null
 	poetry add --dev sphinx_rtd_theme &> /dev/null
-	poetry run sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "{{cookiecutter.full_name}} <{{cookiecutter.email_address}}>" --release 0.0.1 --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs &> /dev/null
+	poetry run sphinx-quickstart --project "{{cookiecutter.project_name}}" --author "{{cookiecutter.full_name}} <{{cookiecutter.email_address}}>" --release {{cookiecutter.project_version}} --language en --no-sep --ext-autodoc --ext-todo --ext-viewcode --makefile --no-batchfile docs &> /dev/null
 	sed -i '' 's/^# import os/import os/' $(SPCONF) &> /dev/null
 	sed -i '' 's/^# import sys/import sys/' $(SPCONF) &> /dev/null
 	sed -i '' "s/^# sys.path.insert(0, os.path.abspath('.'))/sys.path.insert(0, os.path.abspath('..'))/" $(SPCONF) &> /dev/null
